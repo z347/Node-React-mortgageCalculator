@@ -1,0 +1,14 @@
+# temporary files
+.eslintcache
+
+# work envirment
+.idea
+.vscode
+
+# react configuration files
+src/react-app-env.d.ts
+src/reportWebVitals.ts
+src/setupTests.ts
+
+# ignore all files with name
+package-lock.json

@@ -1,0 +1,16 @@
+{
+    /* Visit https://www.typescriptlang.org/docs/handbook/compiler-options.html to read more about this file */
+
+    "compileOnSave": true,
+    "compilerOptions": {
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "target": "ES2015",
+        "removeComments": true,
+        "sourceMap": true,
+        "strict": true,
+        "outDir": "build", // Place all compiled files in this folder, according to their nesting in the source
+        "lib": ["esnext"],
+        "skipLibCheck": true
+    }
+}
