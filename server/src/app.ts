@@ -35,7 +35,7 @@ class App {
         this.dbUrl = appInit.dbUrl;
 
         this.initializeDatabase();
-        this.initializeReact();
+        // this.initializeReact();
         // this.forDevelopMode();
         this.initializeMiddlewares();
         this.initializeRoutes();
@@ -78,10 +78,14 @@ class App {
     }
 
     // It's need for a production version
+    // Must be initialize before any routes
     private initializeReact() {
         this.app.use(express.static(path.join(__dirname, '..', 'build')));
 
-        this.app.get('*', (req, res) => {
+        this.app.get('/', (req, res) => {
+            res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+        });
+        this.app.get('/calculator', (req, res) => {
             res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
         });
     }

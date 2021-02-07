@@ -16,7 +16,7 @@
         "eslint:fix": "eslint ./src/**/* --ext .{ts,json} --fix --color",
         "prettier:check": "prettier --check **/*.{ts,json}",
         "prettier:fix": "prettier --write **/*.{ts,json}",
-        "lint:check": " concurrently \"typescript:check\" \"eslint:check\" \"prettier:check\"",
+        "lint:check": " concurrently \"typescript:build\" \"eslint:check\" \"prettier:check\"",
         "lint:fix": "concurrently \"eslint:fix\" \"prettier:fix\"",
         "npm:update": "npm update --save/--save-dev",
         "npm:audit": "npm audit",
