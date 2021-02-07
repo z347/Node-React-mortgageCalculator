@@ -14,12 +14,26 @@ const CalculatorForm: FC = () => {
 
   const [initialLoan, setInitialLoan] = useState<number>(0);
   const [downPayment, setDownPayment] = useState<number>(0);
+  const [monthlyPayment ,setMonthlyPayment] = useState<number | null>(null);
 
   const { payload } = useSelector((state: RootState) => state.activeBank);
 
+  const r = payload.interestRate;
+  const n = payload.loanTerm;
+  const P = initialLoan;
+
+  const blockTop = P * ((r / 12) * Math.pow((1 + r / 12), n));
+  const blockBottom = Math.pow((1 + r / 12), n) - 1;
+
   const submitHandler = (data: any, event: any) => {
     event.preventDefault();
-    data.initialLoan ? setInitialLoan(data.initialLoan) : setDownPayment(data.downPayment);
+
+    if(data.initialLoan) {
+      setInitialLoan(data.initialLoan)
+    } else {
+      setDownPayment(data.downPayment)
+      setMonthlyPayment((blockTop / blockBottom) / n)
+    }
   };
 
   const initialLoanJSX = (
@@ -70,9 +84,22 @@ const CalculatorForm: FC = () => {
     </form>
   );
 
-  const content = initialLoan === 0 ? [initialLoanJSX] : [downPaymentJSX];
+  const monthlyMortgagePaymentJSX = (
+      <div key="monthlyMortgagePaymentJSX">
+        <h2>Monthly mortgage payment</h2>
+        <p>{monthlyPayment} $</p>
+      </div>
+  );
 
-  return <>{content}</>;
+  const form = initialLoan === 0 ? [initialLoanJSX] : [downPaymentJSX];
+  const monthlyMortgagePayment = monthlyPayment !== null ? [monthlyMortgagePaymentJSX] : null;
+
+  return (
+    <>
+      {form}
+      {monthlyMortgagePayment}
+    </>
+  );
 };
 
 export { CalculatorForm };

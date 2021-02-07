@@ -5,7 +5,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import 'typeface-roboto';
 
-import { store } from 'store/root.store';
+// import { store } from 'store/root.store';
+import { store } from 'utils';
 import MainRouter from 'routes';
 import { AppBarCustom } from 'layouts/Header/Header.layout';
 
