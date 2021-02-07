@@ -1,6 +1,0 @@
-# Visit https://eslint.org/docs/user-guide/configuring to read more about this file
-
-# react default files
-src/react-app-env.d.ts
-src/reportWebVitals.ts
-src/setupTests.ts
