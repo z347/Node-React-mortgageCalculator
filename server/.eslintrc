@@ -28,7 +28,7 @@
         "@typescript-eslint/lines-between-class-members": 0,
         "@typescript-eslint/no-explicit-any": 2,
         "no-console": 0,
-        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+        // "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
         "import/prefer-default-export": "off"
     }
 }

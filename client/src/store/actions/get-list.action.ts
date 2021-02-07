@@ -11,7 +11,7 @@ import {
   ThunkDispatchType,
 } from '../types/get-list.types';
 
-const { domain, prefix, banksInfo } = ApiUrlInfo;
+const { prefix, banksInfo } = ApiUrlInfo;
 
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -21,12 +21,14 @@ function requestGetListWithBanks(): ThunkActionType {
     try {
       dispatch(listIsLoading());
 
-      const response = await fetch(domain + prefix + banksInfo, {
+      const response = await fetch(prefix + banksInfo, {
         method: 'GET',
         cache: 'no-cache',
         headers: { 'Content-Type': 'application/json; charset=UTF-8' },
       });
       const answer: ListType = await response.json();
+
+      console.log(answer);
 
       response.ok ? dispatch(listIsSuccess(answer)) : dispatch(listIsError());
     } catch (e) {

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
-const connect = (URL: string): void => {
+// eslint-disable-next-line
+const connect = (URL: any): void => {
     const createConnect = () => {
         mongoose
             .connect(URL, {

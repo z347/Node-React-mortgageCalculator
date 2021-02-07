@@ -6,10 +6,10 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 // For developer mode
-import morgan from 'morgan';
+// import morgan from 'morgan';
 
 // Additional files
-import logger from './utils/winston-loger';
+// import logger from './utils/winston-loger';
 import connect from './db/create-connection';
 
 // Routes
@@ -24,15 +24,16 @@ import uncaughtExceptionHandler from './middlewares/uncaught-exception-handler';
 
 class App {
     private readonly app: Application;
-    private readonly port: number;
-    private readonly file: string;
-    private readonly dbUrl: string;
+    private readonly port = process.env.PORT;
+    // private readonly file: string;
+    private readonly dbUrl = process.env.MONGODB_URI;
 
-    constructor(appInit: { port: number; currentFile: string; dbUrl: string }) {
+    // constructor(appInit: { port: number; currentFile: string; dbUrl: string }) {
+    constructor() {
         this.app = express();
-        this.port = appInit.port;
-        this.file = appInit.currentFile;
-        this.dbUrl = appInit.dbUrl;
+        // this.port = appInit.port;
+        // this.file = appInit.currentFile;
+        // this.dbUrl = appInit.dbUrl;
 
         this.initializeDatabase();
         this.initializeReact();
@@ -48,15 +49,15 @@ class App {
             try {
                 return console.info(`Server use port: ${this.port}`);
             } catch (error) {
-                logger.error({
-                    timestamp: '',
-                    level: 'error',
-                    errorIn: 'app.listen',
-                    filePath: this.file,
-                    code: error.code,
-                    message: error.message,
-                    stack: error.stack
-                });
+                // logger.error({
+                //     timestamp: '',
+                //     level: 'error',
+                //     errorIn: 'app.listen',
+                //     filePath: this.file,
+                //     code: error.code,
+                //     message: error.message,
+                //     stack: error.stack
+                // });
                 return process.exit(1);
             }
         });
@@ -66,9 +67,9 @@ class App {
         console.info(this.app);
     }
 
-    private forDevelopMode() {
-        this.app.use(morgan('dev'));
-    }
+    // private forDevelopMode() {
+    //     this.app.use(morgan('dev'));
+    // }
 
     private initializeMiddlewares() {
         this.app.use(express.json());
@@ -81,7 +82,11 @@ class App {
     private initializeReact() {
         this.app.use(express.static(path.join(__dirname, '..', 'build')));
 
-        this.app.get('*', (req, res) => {
+        this.app.get('/', (req, res) => {
+            res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+        });
+
+        this.app.get('/calculator', (req, res) => {
             res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
         });
     }

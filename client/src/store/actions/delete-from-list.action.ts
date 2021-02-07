@@ -10,7 +10,7 @@ import {
   ThunkDispatchType,
 } from '../types/delete-from-list.types';
 
-const { domain, prefix, deleteBank } = ApiUrlInfo;
+const { prefix, deleteBank } = ApiUrlInfo;
 
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -20,7 +20,7 @@ function requestDeleteOneBankFromList(bankId: string): ThunkActionType {
     try {
       dispatch(deleteBankIsLoading());
 
-      const response = await fetch(`${domain}${prefix}${deleteBank}:${bankId}`, {
+      const response = await fetch(`${prefix}${deleteBank}:${bankId}`, {
         method: 'DELETE',
         cache: 'no-cache',
       });

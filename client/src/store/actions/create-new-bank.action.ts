@@ -11,7 +11,7 @@ import {
   ThunkDispatchType,
 } from '../types/create-new-bank.types';
 
-const { domain, prefix, banksInfo } = ApiUrlInfo;
+const { prefix, banksInfo } = ApiUrlInfo;
 
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -21,7 +21,7 @@ function creationRequest(data: ICreationBankArguments): ThunkActionType {
     try {
       dispatch(creationIsLoading());
 
-      const response = await fetch(domain + prefix + banksInfo, {
+      const response = await fetch(prefix + banksInfo, {
         method: 'POST',
         cache: 'no-cache',
         headers: { 'Content-Type': 'application/json; charset=UTF-8' },

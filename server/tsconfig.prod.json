@@ -9,7 +9,7 @@
         "removeComments": true,
         "sourceMap": true,
         "strict": true,
-        "outDir": "build", // Place all compiled files in this folder, according to their nesting in the source
+        "outDir": "dist", // Place all compiled files in this folder, according to their nesting in the source
         "lib": ["esnext"],
         "skipLibCheck": true
     }

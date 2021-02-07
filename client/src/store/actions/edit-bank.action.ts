@@ -11,7 +11,7 @@ import {
   ThunkDispatchType,
 } from '../types/edit-bank.types';
 
-const { domain, prefix, banksInfo } = ApiUrlInfo;
+const { prefix, banksInfo } = ApiUrlInfo;
 
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -21,7 +21,7 @@ function editRequest(data: IEditBankArguments): ThunkActionType {
     try {
       dispatch(editBankIsLoading());
 
-      const response = await fetch(domain + prefix + banksInfo, {
+      const response = await fetch(prefix + banksInfo, {
         method: 'PATCH',
         cache: 'no-cache',
         headers: { 'Content-Type': 'application/json; charset=UTF-8' },
