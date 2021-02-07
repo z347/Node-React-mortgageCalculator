@@ -46,6 +46,7 @@
     "no-console": "off",
     "import/prefer-default-export": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "linebreak-style": "off"
   }
 }
