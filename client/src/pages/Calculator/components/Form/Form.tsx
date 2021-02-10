@@ -37,6 +37,12 @@ const CalculatorForm: FC = () => {
     }
   };
 
+  const resetHandler = () => {
+    setInitialLoan(0);
+    setDownPayment(0);
+    setMonthlyPayment(null)
+  };
+
   const initialLoanJSX = (
     <form onSubmit={handleSubmit(submitHandler)} key="initialLoanJSX">
       <TextField
@@ -88,16 +94,30 @@ const CalculatorForm: FC = () => {
   const monthlyMortgagePaymentJSX = (
       <div key="monthlyMortgagePaymentJSX">
         <h2>Monthly mortgage payment</h2>
+        <p>Active bank: {payload.name}</p>
         <p>{monthlyPayment} $</p>
       </div>
   );
 
+  const resetJSX = (
+    <Button
+      key="resetJSX"
+      variant="contained"
+      color="primary"
+      size="large"
+      onClick={resetHandler}
+    >
+      Reset data
+    </Button>
+  )
+
   const form = initialLoan === 0 ? [initialLoanJSX] : [downPaymentJSX];
+  const content = monthlyPayment !== null ? [resetJSX] : form;
   const monthlyMortgagePayment = monthlyPayment !== null ? [monthlyMortgagePaymentJSX] : null;
 
   return (
     <>
-      {form}
+      {content}
       {monthlyMortgagePayment}
     </>
   );
