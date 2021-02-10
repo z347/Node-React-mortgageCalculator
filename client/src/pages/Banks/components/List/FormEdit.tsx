@@ -8,22 +8,22 @@ import SaveIcon from '@material-ui/icons/Save';
 
 import { editRequest } from 'store/actions/edit-bank.action';
 import { requestGetListWithBanks } from 'store/actions/get-list.action';
-import { IEditBankArguments } from 'types/handlers/edit-bank.arguments';
+import { IEditBankArguments, IEditBankItem } from 'types/handlers/edit-bank.arguments';
 import { useStyles } from './styles';
 
 type PropTypes = {
-  id: string;
+  item: IEditBankItem;
 };
 
-const FormEdit: FC<PropTypes> = ({ id }: PropTypes) => {
+const FormEdit: FC<PropTypes> = ({ item }: PropTypes) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm<IEditBankArguments>();
 
   const submitHandler = async (data: any, event: any) => {
     event.preventDefault();
-    // eslint-disable-next-line no-param-reassign
-    data.id = id;
+    // eslint-disable-next-line
+    data.id = item._id;
     await dispatch(editRequest(data));
     await dispatch(requestGetListWithBanks());
   };
@@ -36,6 +36,7 @@ const FormEdit: FC<PropTypes> = ({ id }: PropTypes) => {
         name="name"
         type="text"
         variant="outlined"
+        defaultValue={item.name}
         inputRef={register({
           required: true,
         })}
@@ -48,6 +49,7 @@ const FormEdit: FC<PropTypes> = ({ id }: PropTypes) => {
         name="interestRate"
         type="number"
         variant="outlined"
+        defaultValue={item.interestRate}
         inputRef={register({
           required: true,
         })}
@@ -60,6 +62,7 @@ const FormEdit: FC<PropTypes> = ({ id }: PropTypes) => {
         name="maximumLoan"
         type="number"
         variant="outlined"
+        defaultValue={item.maximumLoan}
         inputRef={register({
           required: true,
         })}
@@ -72,6 +75,7 @@ const FormEdit: FC<PropTypes> = ({ id }: PropTypes) => {
         name="minimumDownPayment"
         type="number"
         variant="outlined"
+        defaultValue={item.minimumDownPayment}
         inputRef={register({
           required: true,
         })}
@@ -84,6 +88,7 @@ const FormEdit: FC<PropTypes> = ({ id }: PropTypes) => {
         name="loanTerm"
         type="number"
         variant="outlined"
+        defaultValue={item.loanTerm}
         inputRef={register({
           required: true,
         })}

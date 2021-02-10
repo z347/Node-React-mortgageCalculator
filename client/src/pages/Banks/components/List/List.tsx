@@ -36,7 +36,7 @@ const BanksList: FC<PropTypes> = ({ list }: PropTypes) => {
         <Typography>Loan term: {item.loanTerm} months</Typography>
         <div className={classes.wrapper}>
           <ButtonDelete data={item._id} />
-          <ButtonEdit bankId={item._id} />
+          <ButtonEdit item={item} />
         </div>
       </AccordionDetails>
     </Accordion>
