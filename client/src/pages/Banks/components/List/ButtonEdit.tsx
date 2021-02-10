@@ -5,14 +5,16 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import EditIcon from '@material-ui/icons/Edit';
 
+import { IEditBankItem } from 'types/handlers/edit-bank.arguments';
+
 import { FormEdit } from './FormEdit';
 import { useStyles } from './styles';
 
 type PropTypes = {
-  bankId: string;
+  item: IEditBankItem;
 };
 
-const ButtonEdit: FC<PropTypes> = ({ bankId }: PropTypes) => {
+const ButtonEdit: FC<PropTypes> = ({ item }: PropTypes) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -40,7 +42,7 @@ const ButtonEdit: FC<PropTypes> = ({ bankId }: PropTypes) => {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Edit bank info</h2>
-            <FormEdit id={bankId} />
+            <FormEdit item={item} />
           </div>
         </Fade>
       </Modal>
