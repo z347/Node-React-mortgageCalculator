@@ -1,1 +1,0 @@
-{"version":3,"file":"invalid-request-handler.js","sourceRoot":"","sources":["../../src/middlewares/invalid-request-handler.ts"],"names":[],"mappings":";;AAEA,MAAM,qBAAqB,GAAG,CAAC,GAAY,EAAE,GAAa,EAAY,EAAE,CACpE,GAAG,CAAC,MAAM,CAAC,GAAG,CAAC,CAAC,IAAI,CAAC,EAAE,OAAO,EAAE,mBAAmB,EAAE,CAAC,CAAC;AAE3D,kBAAe,qBAAqB,CAAC"}
