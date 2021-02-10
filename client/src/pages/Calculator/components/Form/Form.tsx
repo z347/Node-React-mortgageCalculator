@@ -24,6 +24,7 @@ const CalculatorForm: FC = () => {
 
   const blockTop = P * ((r / 12) * Math.pow((1 + r / 12), n));
   const blockBottom = Math.pow((1 + r / 12), n) - 1;
+  const result = (blockTop / blockBottom) / n;
 
   const submitHandler = (data: any, event: any) => {
     event.preventDefault();
@@ -32,7 +33,7 @@ const CalculatorForm: FC = () => {
       setInitialLoan(data.initialLoan)
     } else {
       setDownPayment(data.downPayment)
-      setMonthlyPayment((blockTop / blockBottom) / n)
+      setMonthlyPayment(result)
     }
   };
 
